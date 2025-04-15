@@ -18,7 +18,7 @@ FROM multilingual_name_list WHERE bird_species_china.species = multilingual_name
 SELECT species AS 学名, family AS 科, name_zh AS 中文名, name_en AS 英文名, name_es AS 西班牙文名,
 name_fr AS 法文名, name_de AS 德语名, name_rs AS 俄语名, name_it AS 意大利语名, name_pr AS 葡萄牙语名,
 name_jp AS 日语名, SUM(numberofoccurrences) AS 出现次数, gbif_link, baidu_link
-FROM bird_species_china WHERE ordern = 'Charadriiformes'
+FROM bird_species_china WHERE ordern = 'Ciconiiformes'
 GROUP BY 学名, 科, 中文名, 英文名, 西班牙文名, 法文名, 德语名, 俄语名, 意大利语名, 葡萄牙语名, 日语名, 
 gbif_link, baidu_link
 ORDER BY 出现次数 DESC;
