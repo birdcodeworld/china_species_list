@@ -35,7 +35,7 @@ UPDATE bird_species_china SET baidu_link = 'https://baike.baidu.com/item/' || na
 SELECT species AS 学名, name_zh AS 中文名, name_en AS 英文名, name_es AS 西班牙文名, 
 iucnredlistcategory AS 保护状况, SUM(numberofoccurrences) AS 出现次数
 FROM bird_species_china 
-WHERE ordern = 'Caprimulgiformes' AND iucnredlistcategory <> 'LC' AND iucnredlistcategory is not null
+WHERE ordern = 'Charadriiformes' AND iucnredlistcategory <> 'LC' AND iucnredlistcategory is not null
 GROUP BY 学名, 中文名, 英文名, 西班牙文名, 保护状况 ORDER BY 出现次数 DESC;
 
 
