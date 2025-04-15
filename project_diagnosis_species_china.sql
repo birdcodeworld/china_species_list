@@ -30,4 +30,12 @@ ALTER TABLE bird_species_china ADD COLUMN gbif_link varchar(200), ADD COLUMN bai
 UPDATE bird_species_china SET gbif_link = 'https://www.gbif.org/species/' || specieskey;
 UPDATE bird_species_china SET baidu_link = 'https://baike.baidu.com/item/' || name_zh;
 
+--- Creation of the conservation status table for threatened species
+
+SELECT species AS 学名, name_zh AS 中文名, name_en AS 英文名, name_es AS 西班牙文名, 
+iucnredlistcategory AS 保护状况, SUM(numberofoccurrences) AS 出现次数
+FROM bird_species_china 
+WHERE ordern = 'Accipitriformes' AND iucnredlistcategory <> 'LC' AND iucnredlistcategory is not null
+GROUP BY 学名, 中文名, 英文名, 西班牙文名, 保护状况 ORDER BY 出现次数 DESC;
+
 
